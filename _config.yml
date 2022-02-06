@@ -1,8 +1,8 @@
 site: Hoon
-title: Hoon
-greetings: 뺑뺑 👋
+title: murmur
+greetings: 중얼거리다
 description: >-
-  just a minimalist, personal blog
+  🥱murmur
 lang: en-US
 timezone:  Europe/Rome
 repo: https://github.com/cocodori/cocodori.github.io

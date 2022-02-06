@@ -4,7 +4,7 @@
  <title>murmur</title>
  <link href="https://cocodori.github.io/atom.xml" rel="self"/>
  <link href="https://cocodori.github.io/"/>
- <updated>2022-02-06T11:53:17+01:00</updated>
+ <updated>2022-02-06T12:11:20+01:00</updated>
  <id>https://cocodori.github.io</id>
  <author>
    <name>Hoon</name>
@@ -13,11 +13,56 @@
 
  
  <entry>
-   <title>새로운 블로그</title>
-   <link href="https://cocodori.github.io/2022/02/06/%EC%B2%AB%EB%B2%88%EC%A7%B8-%EA%B8%80"/>
+   <title>요약 - 한 개의 메소드만 갖는 계층형 패키지 스타일</title>
+   <link href="https://cocodori.github.io/2022/02/06/%EC%9A%94%EC%95%BD-%ED%95%9C-%EA%B0%9C%EC%9D%98-%EB%A9%94%EC%86%8C%EB%93%9C%EB%A7%8C-%EA%B0%96%EB%8A%94-%EA%B3%84%EC%B8%B5%ED%98%95-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%8A%A4%ED%83%80%EC%9D%BC"/>
    <updated>2022-02-06T00:00:00+01:00</updated>
-   <id>https://cocodori.github.io/2022/02/06/첫번째-글</id>
-   <content type="html">&lt;p&gt;새 블로그를 열었다.&lt;/p&gt;
+   <id>https://cocodori.github.io/2022/02/06/요약-한-개의-메소드만-갖는-계층형-패키지-스타일</id>
+   <content type="html">&lt;p&gt;방대한 서비스 클래스를 어떻게 잘 나눌 수 있을까? 고민한 적 많았는데 우연히 이 글을 읽었다. 기회가 되면 실제 프로젝트에 적용해보고 싶다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://johngrib.github.io/wiki/article/hierarchical-controller-package-structure/#fn:c-s-r-blame&quot;&gt;(기록) 한 개의 메소드만 갖는 계층형 컨트롤러/서비스 패키지 스타일 - 기계인간 John Grib&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;요약&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;한-개의-메소드만-갖는-계층형-패키지-스타일&quot;&gt;한 개의 메소드만 갖는 계층형 패키지 스타일&lt;/h1&gt;
+&lt;p&gt;Java/Spring을 사용해 애플리케이션을 만들다보면 Controller-Service-Repository 패키지 안에서 영원히 헤매고 다니게 됨. 프로젝트에 익숙해지기 전에는 뭐가 어디에 있는지 알 수 없음.&lt;/p&gt;
+
+&lt;p&gt;그래서 한 가지 실험을 했음
+	* 집합의 포함관계를 강력히 의식한 계층형 구조로 패키지를 구성
+	* 한 가지 용도를 암시하는 클래스 이름으로 행위와 책임을 제한(SRP)
+	* 서비스/컨트롤러를 만들 때 public 메소드를 딱 한 가지만 가지도록 만듦&lt;/p&gt;
+
+&lt;h2 id=&quot;command-query를-분리하다&quot;&gt;Command, Query를 분리하다&lt;/h2&gt;
+&lt;p&gt;글쓴이가 신입일 때는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BoardService&lt;/code&gt;  같은 걸 만들어서 모든 메소드를 쑤셔넣음.
+수백 라인이 되는 매우 불안한 서비스 클래스를 생산해냈음.
+그러다 연차가 좀 쌓이고 Command(등록,수정,삭제), Query(조회)로 나눔.
+	* &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BoardCommandService&lt;/code&gt;
+	* &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BoardQueryService&lt;/code&gt;
+하지만 반으로 쪼개졌을 뿐 비대하고 엉망이긴 마찬가지.&lt;/p&gt;
+
+&lt;h2 id=&quot;srp를-준수하자&quot;&gt;SRP를 준수하자.&lt;/h2&gt;
+&lt;p&gt;문득 SRP를 강력하게 지킨다면 더 단순하게 만들 수 있겠다는 생각이 듦.
+컴포넌트 하나가 public 메소드를 하나만 서비스하도록 설계했더니 생각보다 괜찮았음.
+해당 클래스에 대한 테스트 클래스 파일도 메소드 하나만을 주제로 테스트하니 좋았음.&lt;/p&gt;
+
+&lt;p&gt;그리고 서비스 클래스를 만들 때 에릭에반스 DDD 책을 참고해  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;***Service&lt;/code&gt; 라고 네이밍하지 않고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-er&lt;/code&gt; 로 했음.
+이런 식.
+	* &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BoardCreator&lt;/code&gt;
+	* &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CommentCreator&lt;/code&gt; 
+	* &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CommentDeleter&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;이렇게 변경하니 방대한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BoardService&lt;/code&gt; 는 CRUD 오퍼레이션 단위로 촘촘하게 분리할 수 있었음.
+	* 클래스 하나가 30줄을 넘는 경우가 드물다
+	* 파일 열어보면 5초 안에 뭐하는 파일인지 바로 파악 가능
+	* 테스트 코드 응집도 높아짐
+	* 파일이 많아지긴 하나 크게 신경쓰지 않음&lt;/p&gt;
+
+&lt;p&gt;소규모 프로젝트에 적용했고 이 프로젝트에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-Service&lt;/code&gt; 로 끝나는 클래스가 단 하나도 없었음.&lt;/p&gt;
+
+&lt;h2 id=&quot;컨트롤러도-마찬가지로-srp를-준수하도록&quot;&gt;컨트롤러도 마찬가지로 SRP를 준수하도록&lt;/h2&gt;
+&lt;p&gt;컨트롤러를 만들 때 다음과 같은 규칙을 설정함
+ 	* 컨트롤러 하나는 API URI 하나만 담당한다
+ 	* URI 경로를 그대로 패키지 경로로 사용한다
+URI가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/shop/product&lt;/code&gt; 라고 할 때 패키지를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;web/shop/product&lt;/code&gt; 이런 식으로 만들고 컨트롤러를 이 안에 배치.&lt;/p&gt;
 </content>
  </entry>
  

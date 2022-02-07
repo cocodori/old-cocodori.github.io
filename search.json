@@ -1,12 +1,12 @@
 [
   
     {
-      "title"    : "",
-      "description" : "",
+      "title"    : "Effective Kotlin Item5 예외를 활용해 코드에 제한을 걸어라",
+      "description" : "확실하게 어떤 형태로 동작해야 하는 코드가 있다면 예외를 활용해 제한을 거는 게 좋다",
       "category" : "",
-      "tags"     : "",
-      "url"      : "/2022/02/07/2022-02-07-effective-kotlin-item5-%EC%98%88%EC%99%B8%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4-%EC%BD%94%EB%93%9C%EC%97%90-%EC%A0%9C%ED%95%9C%EC%9D%84-%EA%B1%B8%EC%96%B4%EB%9D%BC",
-      "date"     : "2022-02-07 13:54:18 +0100"
+      "tags"     : "이펙티브-코틀린",
+      "url"      : "/2022/02/07/effective-kotlin-item5-%EC%98%88%EC%99%B8%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4-%EC%BD%94%EB%93%9C%EC%97%90-%EC%A0%9C%ED%95%9C%EC%9D%84-%EA%B1%B8%EC%96%B4%EB%9D%BC",
+      "date"     : "2022-02-07 00:00:00 +0100"
     } ,
   
     {

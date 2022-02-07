@@ -4,7 +4,7 @@
  <title>murmur</title>
  <link href="https://cocodori.github.io/atom.xml" rel="self"/>
  <link href="https://cocodori.github.io/"/>
- <updated>2022-02-07T13:54:18+01:00</updated>
+ <updated>2022-02-07T13:56:07+01:00</updated>
  <id>https://cocodori.github.io</id>
  <author>
    <name>Hoon</name>
@@ -13,10 +13,10 @@
 
  
  <entry>
-   <title></title>
-   <link href="https://cocodori.github.io/2022/02/07/2022-02-07-effective-kotlin-item5-%EC%98%88%EC%99%B8%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4-%EC%BD%94%EB%93%9C%EC%97%90-%EC%A0%9C%ED%95%9C%EC%9D%84-%EA%B1%B8%EC%96%B4%EB%9D%BC"/>
-   <updated>2022-02-07T13:54:18+01:00</updated>
-   <id>https://cocodori.github.io/2022/02/07/2022-02-07-Effective-Kotlin-Item5-예외를-활용해-코드에-제한을-걸어라</id>
+   <title>Effective Kotlin Item5 예외를 활용해 코드에 제한을 걸어라</title>
+   <link href="https://cocodori.github.io/2022/02/07/effective-kotlin-item5-%EC%98%88%EC%99%B8%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%B4-%EC%BD%94%EB%93%9C%EC%97%90-%EC%A0%9C%ED%95%9C%EC%9D%84-%EA%B1%B8%EC%96%B4%EB%9D%BC"/>
+   <updated>2022-02-07T00:00:00+01:00</updated>
+   <id>https://cocodori.github.io/2022/02/07/Effective-Kotlin-Item5-예외를-활용해-코드에-제한을-걸어라</id>
    <content type="html">&lt;h3 id=&quot;요약&quot;&gt;요약&lt;/h3&gt;
 
 &lt;p&gt;확실하게 어떤 형태로 동작해야 하는 코드가 있다면, 예외를 활용해 제한을 거는 게 좋다.

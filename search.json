@@ -1,6 +1,24 @@
 [
   
     {
+      "title"    : "Common Batch Pattern",
+      "description" : "일부 배치 job은 스프링 배치가 제공하는 컴포넌트 만으로 구성할 수 있다.",
+      "category" : "",
+      "tags"     : "Spring-Batch",
+      "url"      : "/2022/02/10/spring-batch-common-pattern",
+      "date"     : "2022-02-10 00:00:00 +0100"
+    } ,
+  
+    {
+      "title"    : "SpringBatch JsonItemReader",
+      "description" : "스프링 배치는 JSON 처리에 사용할 수 있는 ItemReader를 제공한다.",
+      "category" : "",
+      "tags"     : "Spring-Batch",
+      "url"      : "/2022/02/08/spring-batch-jsonitemreader",
+      "date"     : "2022-02-08 00:00:00 +0100"
+    } ,
+  
+    {
       "title"    : "Effective Kotlin Item5 예외를 활용해 코드에 제한을 걸어라",
       "description" : "확실하게 어떤 형태로 동작해야 하는 코드가 있다면 예외를 활용해 제한을 거는 게 좋다",
       "category" : "",

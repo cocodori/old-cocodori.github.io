@@ -1,6 +1,15 @@
 [
   
     {
+      "title"    : "Rust Hello world",
+      "description" : "",
+      "category" : "",
+      "tags"     : "Rust",
+      "url"      : "/2022/02/11/rust-hello-world",
+      "date"     : "2022-02-11 00:00:00 +0100"
+    } ,
+  
+    {
       "title"    : "Common Batch Pattern",
       "description" : "일부 배치 job은 스프링 배치가 제공하는 컴포넌트 만으로 구성할 수 있다.",
       "category" : "",

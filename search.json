@@ -1,6 +1,15 @@
 [
   
     {
+      "title"    : "Graph",
+      "description" : "",
+      "category" : "",
+      "tags"     : "data-structure",
+      "url"      : "/2022/02/12/graph",
+      "date"     : "2022-02-12 00:00:00 +0100"
+    } ,
+  
+    {
       "title"    : "Rust Hello world",
       "description" : "",
       "category" : "",

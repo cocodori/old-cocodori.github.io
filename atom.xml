@@ -4,13 +4,329 @@
  <title>murmur</title>
  <link href="https://cocodori.github.io/atom.xml" rel="self"/>
  <link href="https://cocodori.github.io/"/>
- <updated>2022-02-11T15:52:11+01:00</updated>
+ <updated>2022-02-12T05:08:35+01:00</updated>
  <id>https://cocodori.github.io</id>
  <author>
    <name>Hoon</name>
    <email>leejihun1024@gmail.coms</email>
  </author>
 
+ 
+ <entry>
+   <title>Graph</title>
+   <link href="https://cocodori.github.io/2022/02/12/graph"/>
+   <updated>2022-02-12T00:00:00+01:00</updated>
+   <id>https://cocodori.github.io/2022/02/12/Graph</id>
+   <content type="html">&lt;h1 id=&quot;graph&quot;&gt;Graph&lt;/h1&gt;
+
+&lt;p&gt;그래프는 vertex와 edge로 이루어진 자료구조다.
+vertex간 관계를 표현하는 조직도라고 볼 수 있다. 이런 점에서 Tree는 일종의 Graph다.&lt;/p&gt;
+
+&lt;p&gt;하지만 Graph는 Tree와 달리 vertex마다 edge가 있을 수도 있고, 없을 수도 있다. 루트 노드와 부모 자식이라는 개념이 존재하지 않는다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Graph와 Tree&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;구분&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Graph&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Tree&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;정의&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;node와 그 node를 연결하는 간선edge을 하나로 모아놓은 자료구조&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Graph의 한 종류. DAG(Directed Acyclic Graph, 방향성이 있는 비순환 그래프)의 한 종류&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;방향성&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;방향 그래프, 무방향 그래프 모두 존재&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;방향 그래프&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;사이클&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;사이클 가능. 자체 간선self-loop도 가능. 순환 그래프cycle, 비순환 그래프acyclic 모두 존재.&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;사이클 불가능. self-loop도 불가능. 비순환 그래프&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;루트 노트&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;루트 노드의 개념이 없음&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;한 개의 루트 노드만 존재. 한 개의 노드만 존재. 모든 자식 노드는 한 개의 부모 노드만을 가짐&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;모델&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;네트워크 모델&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;계층 모델&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;순회&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;BFS, DFS&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;DFS, BFS안의 Pre-, In-, Post-order&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;간선 수&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;그래프에 따라 다르며 없을 수도 있음&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;N개의 노드라면 N-1개&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;경로&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;-&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;임의의 두 노드 간의 경로는 유일&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;예시 및 종류&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;지도, 지하철 노선도의 최단 경로, 전기 회로의 소자, 도로&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;이진 트리, 이진 탐색 트리, 균형 트리, 이진 힙 등&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;참고&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;오일러 경로(Eulerian tour):&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;그래프에 존재하는 모든 간선edge을 한 번만 통과하면 처음 정점vertex으로 돌아오는 경로를 말한다.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;그래프의 모든 정점에연결된 간선의 갯수가 짝수일 때만 오일러 경로가 존재한다.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;graph-용어&quot;&gt;Graph 용어&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;정점(vertex): 위치라는 개념. node라고도 부름.&lt;/li&gt;
+  &lt;li&gt;간선(edge): 위치 간의 관계. 즉, 노드를 연결하는 선. link/branch라고도 부름.&lt;/li&gt;
+  &lt;li&gt;인접 정점(adjacent vertex): 간선에 의해 직접 연결된 정점&lt;/li&gt;
+  &lt;li&gt;정점의 차수(degree): 무방향 그래프에서 하나의 정점에 인접한 정점의 수.&lt;/li&gt;
+  &lt;li&gt;진입 차수(in-degree): 방향 그래프에 외부에서 오는 간선의 수&lt;/li&gt;
+  &lt;li&gt;진출 차수(out-degree): 방향 그래프에서 외부로 향하는 간선의 수&lt;/li&gt;
+  &lt;li&gt;경로 길이(path length): 경로를 구성하는 데 사용된 간선의 수&lt;/li&gt;
+  &lt;li&gt;단순 경로(simple path): 경로 중에서 반복되는 정점이 없을 경우&lt;/li&gt;
+  &lt;li&gt;사이클(cycle): 단순 경로의 시작 정점과 종료 정점이 동일한 경우&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;graph-특징&quot;&gt;Graph 특징&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;그래프는 네트워크 모델임.&lt;/li&gt;
+  &lt;li&gt;2개 이상의 ㄱ여로가 가능.&lt;/li&gt;
+  &lt;li&gt;self-loop뿐 아니라 loop/circuit도 가능&lt;/li&gt;
+  &lt;li&gt;루트 노드 개념 없음&lt;/li&gt;
+  &lt;li&gt;부모-자식 관계 개념 없음&lt;/li&gt;
+  &lt;li&gt;순회는 DFS 또는 BFS&lt;/li&gt;
+  &lt;li&gt;그래프는 cycle or acyclic이 있음&lt;/li&gt;
+  &lt;li&gt;그래프는 크게 방향 그래프와 무방향 그래프가 있음.&lt;/li&gt;
+  &lt;li&gt;간선의 유무는 그래프에 따라 다름.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;graph의-종류&quot;&gt;Graph의 종류&lt;/h2&gt;
+&lt;h3 id=&quot;무방향-그래프-vs-방향-그래프&quot;&gt;무방향 그래프 vs. 방향 그래프&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;무방향 그래프Undirected Graph
+    &lt;ul&gt;
+      &lt;li&gt;무방향 그래프의 간선은 간선을 통해서만 양방향으로 갈 수 있다.&lt;/li&gt;
+      &lt;li&gt;정점 A와 정점 B를 연결하는 간선은 (A, B)와 같이 정점의 쌍으로 표현한다.
+  	- (A, B)는 (B, A)와 동일하다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;방향 그래프Directed Graph
+    &lt;ul&gt;
+      &lt;li&gt;간선에 방향성이 존재하는 그래프&lt;/li&gt;
+      &lt;li&gt;A -&amp;gt; B로만 갈 수 있는 간선은 &amp;lt;A,B&amp;gt;로 표시한다.
+  	- &amp;lt;A,B&amp;gt;는 &amp;lt;B,A&amp;gt;와 다르다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;가중치-그래프&quot;&gt;가중치 그래프&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;가중치 그래프Weighted Graph
+    &lt;ul&gt;
+      &lt;li&gt;간선에 비용이나 가중치가 할당된 그래프&lt;/li&gt;
+      &lt;li&gt;네트워크라고도 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;연결-그래프-vs-비연결-그래프&quot;&gt;연결 그래프 VS. 비연결 그래프&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;연결 그래프Connected Graph
+    &lt;ul&gt;
+      &lt;li&gt;무방향 그래프에 있는 모든 정점쌍에 대해서 항상 경로가 존재하는 경우.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;비연결 그래프Disconnected Graph
+    &lt;ul&gt;
+      &lt;li&gt;무방향 그래프에서 특정 정점쌍 사이에 경로가 존재하지 않는 경우&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;사이클-vs-비순환-그래프&quot;&gt;사이클 VS. 비순환 그래프&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Cycle
+    &lt;ul&gt;
+      &lt;li&gt;단순 경로simple path의 시작과 종료 정점이 동일한 경우&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Acylic graph
+    &lt;ul&gt;
+      &lt;li&gt;사이클이 없는 그래프&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;완전-그래프&quot;&gt;완전 그래프&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;완전 그래프Completed Graph
+    &lt;ul&gt;
+      &lt;li&gt;그래프에 속해 있는 모든 정점이 서로 연결되어 있는 그래프&lt;/li&gt;
+      &lt;li&gt;무방향 완전 그래프&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;그래프-구현-두-가지&quot;&gt;그래프 구현 두 가지&lt;/h2&gt;
+
+&lt;h3 id=&quot;1인접-리스트adjaceny-list&quot;&gt;1.인접 리스트(Adjaceny List)&lt;/h3&gt;
+&lt;p&gt;인접 리스트로 그래프를 표현하는 것이 가장 일반적인 방법이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;모든 노드를 인접 리스트에 저장한다. 즉, 각각 노드에 인접한 노드들을 리스트로 표시한다.
+    &lt;ul&gt;
+      &lt;li&gt;배열과 배일의 각 인덱스마다 존재하는 또다른 리스트, 연결리스트를 이용해서 인접 리스트를 표현.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  0: 1
+  1: 2
+  2: 0, 3
+  3: 2
+  4: 6
+  5: 4
+  6: 5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;노드의 번호만 알면 이 번호를 배열의 인덱스로 하여 각 노드 리스트에 쉽게 접근할 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;무방향 그래프에서 (a,b) 간선은 두 번 저장된다.
+    &lt;ul&gt;
+      &lt;li&gt;한 번은 a 노드에 인접한 간선을 저장하고, 다른 한 번은 b에 인접한 간선을 저장한다.&lt;/li&gt;
+      &lt;li&gt;노드의 수: N, 간선의 수: E인 무방향 그래프의 경우 N개의 리스트, N개의 배열, 2E개의 노드가 필요.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;트리에선 특정 노드 하나(루트 노드)에서 다른 모든 노드로 접근이 가능하다.&lt;/li&gt;
+  &lt;li&gt;그래프에서는 특정 노드에서 다른 모드로 접근이 가능하지는 않다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Graph&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;인접-행렬adjacency-matrix&quot;&gt;인접 행렬(Adjacency Matrix)&lt;/h2&gt;
+&lt;p&gt;인접 행렬은 NxN 불린 행렬(Boolean Matrix)로, matrix[i][j]가 true라면 i -&amp;gt; j로 간선이 있다는 뜻이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;0과 1을 이용한 정수 매트릭스를 사용할 수도 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;간선&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;가&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;그래프에&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;존재&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;노드의 개수가 N인 그래프를 인접 행렬로 표현
+    &lt;ul&gt;
+      &lt;li&gt;간선의 수와 무관하게 항상 n^2개의 메모리 공간이 필요.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;무방향 그래프를 인접 행렬로 표현한다면, 이 행렬은 대칭 행렬Symmetric Matrix이 된다.
+    &lt;ul&gt;
+      &lt;li&gt;물론 방향 그래프는 대칭 행렬이 안될 수도 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;인접 리스트를 사용한 그래프 알고리즘들 또한 인접 행렬에서도 사용이 가능하다.
+    &lt;ul&gt;
+      &lt;li&gt;하지만 인접 행렬은 효율성이 떨어진다.&lt;/li&gt;
+      &lt;li&gt;인접 리스트는 어떤 노드에 인접한 노드를 쉽게 찾을 수 있지만, 인접 행렬에서는 인접한 노드를 찾기 위해 모든 노드를 순회해야 함.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;인접-리스트와-인접-행렬-중-선택-방법&quot;&gt;인접 리스트와 인접 행렬 중 선택 방법&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;인접 리스트
+    &lt;ul&gt;
+      &lt;li&gt;그래프 내 적은 숫자 간선만을 가지는 희소 그래프(Sparse Graph)의 경우&lt;/li&gt;
+      &lt;li&gt;장점
+  	- 어떤 노드에 인접한 노드를 쉽게 찾을 수 있다.
+        &lt;ul&gt;
+          &lt;li&gt;그래프에 존재하는 모든 간선의 수는 O(N+E)안에 알 수 있다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;단점
+  	- 간선의 존재 여부와 정점의 차수: 정점 i의 리스트에 있는 노드의 차수, 즉 정점 차수만큼 시간이 필요.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;인접 행렬
+    &lt;ul&gt;
+      &lt;li&gt;그래프에 간선이 많이 존재하는 밀집 그래프Dense Graph의 경우&lt;/li&gt;
+      &lt;li&gt;장점
+  	- 두 정점을 연결하는 간선의 존재 여부를(M[i][j])를 O(1) 안에 즉시 알 수 있다.
+        &lt;ul&gt;
+          &lt;li&gt;정점의 차수는 O(N) 안에 알 수 있다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;단점
+  	- 어떤 노드에 인접한 노드를 찾기 위해 모든 노드를 순회해야 함.
+        &lt;ul&gt;
+          &lt;li&gt;그래프에 존재하는 모든 간선의 수는 O(N^2) 안에 알 수 있다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;그래프의-탐색&quot;&gt;그래프의 탐색&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-깊이-우선-탐색dfs-depth-first-search&quot;&gt;1. 깊이 우선 탐색(DFS, Depth-First Search)&lt;/h3&gt;
+
+&lt;p&gt;루트 노드 혹은 임의의 노드에서 시작해서 다음 분기로 넘어가기 전에 해당 분기를 완벽하게 탐색하는 방법&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;즉 넓게 탐색하기 전에 깊게 탐색하는 것.&lt;/li&gt;
+  &lt;li&gt;사용하는 경우: 모든 노드를 방문하고자 하는 경우&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-너비-우선-탐색bfs-breadth-first-search&quot;&gt;2. 너비 우선 탐색(BFS, Breadth-First Search)&lt;/h3&gt;
+&lt;p&gt;루트 노드 혹은 임의의 노드에서 시작해서 인접한 노드를 먼저 탐색하는 방법&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;깊게 탐색하기 전에 넓게 탐색하는 것&lt;/li&gt;
+  &lt;li&gt;사용하는 경우: 두 노드 사이의 최단 경로 혹은 임의의 경로를 찾고 싶을 때 이 방법을 사용.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;참고:
+https://gmlwjd9405.github.io/2018/08/13/data-structure-graph.html&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Rust Hello world</title>

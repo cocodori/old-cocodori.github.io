@@ -1,6 +1,15 @@
 [
   
     {
+      "title"    : "디미터 법칙",
+      "description" : "",
+      "category" : "",
+      "tags"     : "oop",
+      "url"      : "/2022/02/17/%EB%94%94%EB%AF%B8%ED%84%B0-%EB%B2%95%EC%B9%99",
+      "date"     : "2022-02-17 00:00:00 +0100"
+    } ,
+  
+    {
       "title"    : "오브젝트 6장 메시지와 인터페이스01",
       "description" : "",
       "category" : "",

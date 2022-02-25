@@ -4,13 +4,109 @@
  <title>murmur</title>
  <link href="https://cocodori.github.io/atom.xml" rel="self"/>
  <link href="https://cocodori.github.io/"/>
- <updated>2022-02-18T15:19:30+01:00</updated>
+ <updated>2022-02-25T14:39:15+01:00</updated>
  <id>https://cocodori.github.io</id>
  <author>
    <name>Hoon</name>
    <email>leejihun1024@gmail.coms</email>
  </author>
 
+ 
+ <entry>
+   <title>요약 외부 시스템 장애에 대처하는 우리의 자세</title>
+   <link href="https://cocodori.github.io/2022/02/25/%EC%9A%94%EC%95%BD-%EC%99%B8%EB%B6%80-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%9E%A5%EC%95%A0-%EB%8C%80%EC%B2%98"/>
+   <updated>2022-02-25T00:00:00+01:00</updated>
+   <id>https://cocodori.github.io/2022/02/25/요약:-외부-시스템-장애-대처</id>
+   <content type="html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[외부 시스템 장애에 대처하는 우리의 자세&lt;/td&gt;
+      &lt;td&gt;우아한형제들 기술블로그](https://techblog.woowahan.com/6447/?fbclid=IwAR1NJ49V0a6EdLdMOnj-nVXQY49WKQu_uNAe3SyrZgGl9oGce2H6ocHwWYg)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;위 글을 읽고 요약한 글입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;외수-시스템이랑-왜-연동하나&quot;&gt;외수 시스템이랑 왜 연동하나?&lt;/h2&gt;
+
+&lt;p&gt;필요한 모든 기능을 직접 개발/관리할 수 없음. 그래서 지도, PG, 메시지 서비스 등 외부 시스템을 도움을 받을 수밖에 없다.&lt;/p&gt;
+
+&lt;p&gt;간단한 연동 작업을 통해 수준 높은 서비스를 이용할 수 있고, 직접 구축/운영하는 것보다 비용이 훨씬 적게 듦.&lt;/p&gt;
+
+&lt;p&gt;이 글은 안정적인 서비스 제공을 위해서 어떻게 외부 시스템을 연동하는지 고민을 담은 글&lt;/p&gt;
+
+&lt;p&gt;2018년에 배민이 사용하던 클라우드 서비스가 장애를 일으켰음. 클라우드 서비스 업체의 정상화되었다는 말을 기다리는 것말고는 할 수 있는 게 없었음. 하지만 클라우드 서비스 장애로 대부분 서비스가 동작하지 않았지만, 배민앱은 오프라인 모드 덕분에 스마트폰에 저장된 캐시를 통해서 일부 서비스를 이용할 수 있었음.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;오프라인 모드에 대한 글은 &lt;a href=&quot;https://techblog.woowahan.com/2589/&quot;&gt;여기&lt;/a&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;아무튼 간 이뿐만 아니라 IDC가 죽는 일도 있고 외부 SDK 장애, 통신사 라우팅 장애 등 외부 시스템 장애는 손 쓸 방법도 없기 때문에 고통스러웠음. 배민 2021년 내부 지표에 따르면 발생한 장애 중 45% 이상이 외부 시스템 영향을 받음.&lt;/p&gt;
+
+&lt;p&gt;이 문제를 어떻게 해결할까 고민하면서 2020년부터 &lt;strong&gt;외부 시스템 의존성 조사&lt;/strong&gt;를 시작했음.&lt;/p&gt;
+
+&lt;p&gt;어떤 항목을 수집하냐면
+&lt;strong&gt;외부 시스템 정보&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;명칭&lt;/li&gt;
+  &lt;li&gt;제공 업체 정보&lt;/li&gt;
+  &lt;li&gt;2020년 장애 발생횟수&lt;/li&gt;
+  &lt;li&gt;사용 보편성&lt;/li&gt;
+  &lt;li&gt;갱신 주기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;내부 서비스 정보&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;담당팀&lt;/li&gt;
+  &lt;li&gt;유발 장애 등급&lt;/li&gt;
+  &lt;li&gt;알람 채널&lt;/li&gt;
+  &lt;li&gt;모니터링 수단&lt;/li&gt;
+  &lt;li&gt;로그 정보&lt;/li&gt;
+  &lt;li&gt;의존성 약화 or  제거 방안&lt;/li&gt;
+  &lt;li&gt;현재 상태&lt;/li&gt;
+  &lt;li&gt;목표 상태&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이 조사를 통해 리스크를 가시화했음&lt;/p&gt;
+
+&lt;h2 id=&quot;외부-시스템-연동-시-주의사항&quot;&gt;외부 시스템 연동 시 주의사항&lt;/h2&gt;
+
+&lt;p&gt;외부 시스템 문제로 장애가 발생해도 고객은 모름. 우리 앱에 대한 부정적인 경험을 만들 수 있음.&lt;/p&gt;
+
+&lt;p&gt;그래서 외부 시스템 장애를 회피할 수 있는 몇 가지 방법&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;의존성 제거&lt;/p&gt;
+
+    &lt;p&gt;연동이 필요할 때 정말 이 연동이 필요한지 고민해야 함. 연동된 서비스 장애가 우리 서비스에 영향을 주는 경우 필요한 기능이 서비스 안정성보다 우선하는지 비교/판단해야 함. 리스크를 감수할 수 있을 만큼 필요한 기능인가?를 반드시 생각해야 함. 대체할 방법이 있다면 의존관계를 맺지 않는 것이 서비스 안정성을 높이는 가장 쉬운 방법임.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;벤더 이중화&lt;/p&gt;
+
+    &lt;p&gt;PG서비스, 지도 서비스, 문자 서비스 등 벤더 이중화에 적합한 케이스임. 일반적으로 필수 기능은 동일하게 제공하기 때문에 이중화 구현이 가능. 벤더 이중화를 구현할 때는 자동으로 전환되게 하는 것이 가장 좋지만, 현실적으로 불가능한 경우가 많기 때문에 장애 시간을 최소화할 수 있도록 벤더 간 전환이 간단하게 동작할 수 있게 구성하는 것이 중요.&lt;/p&gt;
+
+    &lt;p&gt;개발자가 반드시 개입해야 하는 구조보다, 어드민에 전환 기능을 구현해두고 권한이 있는 다수 팀원이 조치할 수 있도록 구성하는 것이 일반적&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;장애 격리&lt;/p&gt;
+
+    &lt;p&gt;외부 시스템 연동을 하다 보면 이중화를 고려할 만큼 서비스가 크지 않거나, 이중화에 비용이 너무 많이 들거나, 이중화 할 수 있는 다른 벤더가 없는 경우 등 여러 이유로 이중화가 불가능한 시스템도 존재함. 이런 경우 외부 시스템의 장애가 &lt;strong&gt;연동과 관련 없는 부분으로 전파되지 않도록 장애를 격리&lt;/strong&gt;하는 것이 중요. 특정 기능에 장애가 발생하더라도 다른 기능을 사용자가 사용할 수 있도록 제공하는 것이 핵심임.&lt;/p&gt;
+
+    &lt;p&gt;예를 들어 포장 서비스에서 가게 위치를 표시해주는 지도가 있음. 이 지도에 장애가 발생해도 포장 서비스는 이용할 수 있어야 함.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;미작동 감내&lt;/p&gt;
+
+    &lt;p&gt;아무리 피해도 회피가 불가능할 때가 있음. 클라우드 서비스가 그럼. 이런 경우 외부 시스템의 장애를 감내해야함.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>의도를 드러내는 인터페이스</title>

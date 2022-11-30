@@ -1,1 +1,0 @@
-# [blog](https://cocodori.github.io)
